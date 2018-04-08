@@ -1,0 +1,62 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="ServicePoint.Site" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <title>Wensy</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="author" content="" />
+    <link href="/Common/Bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="/Common/Bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" />
+    <link href="/Common/Bootstrap/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
+    <link href="/Common/Bootstrap/css/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+	<link href="/Common/css/jquery-ui-1.9.2.custom.css" rel="stylesheet" type="text/css" />
+    <%--<link href="/Common/Bootstrap/css/common.css" rel="stylesheet" />--%>
+    <%-- <link href="/Common/Bootstrap/css/bootstrap-carousel-vertical.css" rel="stylesheet" type="text/css" />--%>
+    <link href="/Common/Bootstrap/css/gms.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="/Common/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/Common/Bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/Common/js/gms.js"></script>
+    <script type="text/javascript" src="/Common/js/date.js"></script>
+    <script type="text/javascript" src="/Common/js/Flotr2/flashcanvas.js"></script>
+    <script type="text/javascript" src="/Common/js/Flotr2/flotr2.min.js"></script>
+    <script type="text/javascript" src="/Common/js/Flotr2/Chart.js"></script>
+	<script type="text/javascript" src="/Common/js/jquery-ui-1.9.2.custom.min.js"></script>
+
+</head>
+<body>
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+        <div class="container-fluid">
+            <div class="row">
+                <Menu:Top ID="MenuTop" runat="server" />
+            </div>
+        </div>
+    </asp:ContentPlaceHolder>
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="col-md-2 col-lg-2">
+                <Menu:AdminLeft ID="AdminMenuLeft" runat="server" />
+            </div>
+            <div class="col-md-10 col-lg-10">
+                <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+            </div>
+        </div>
+    </div>
+    <asp:ContentPlaceHolder ID="ModalContent" runat="server" />
+    <asp:ContentPlaceHolder ID="ScriptContent" runat="server" />
+</body>
+</html>

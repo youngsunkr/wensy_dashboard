@@ -1,0 +1,765 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AvailableTimeAlertDetail" xml:space="preserve">
+    <value>상세를 입력해 주세요.</value>
+  </data>
+  <data name="AvailableTimePointPerMinute" xml:space="preserve">
+    <value>포인트/분</value>
+  </data>
+  <data name="AvailableTimeSum" xml:space="preserve">
+    <value>합계</value>
+  </data>
+  <data name="BtnMailCancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="BtnMailSend" xml:space="preserve">
+    <value>Send</value>
+  </data>
+  <data name="CommonAlertDuration" xml:space="preserve">
+    <value>48시간 이상의 기간에 대한 성능 데이터 조회는 지원되지 않습니다.</value>
+  </data>
+  <data name="CommonAlertLevel" xml:space="preserve">
+    <value>알림수준</value>
+  </data>
+  <data name="CommonAlertNow" xml:space="preserve">
+    <value>즉시알림</value>
+  </data>
+  <data name="CommonBtnApply" xml:space="preserve">
+    <value>Apply</value>
+  </data>
+  <data name="CommonBtnCancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="CommonBtnDelete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="CommonBtnModify" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="CommonBtnRegist" xml:space="preserve">
+    <value>Submit</value>
+  </data>
+  <data name="CommonCollectionPeriod" xml:space="preserve">
+    <value>수집기간(초)</value>
+  </data>
+  <data name="CommonDBConFail" xml:space="preserve">
+    <value>설정 DB연결에 실패하였습니다.</value>
+  </data>
+  <data name="CommonDetail" xml:space="preserve">
+    <value>상세</value>
+  </data>
+  <data name="CommonDisplayName" xml:space="preserve">
+    <value>디스플레이명</value>
+  </data>
+  <data name="CommonDuration" xml:space="preserve">
+    <value>조회 기간</value>
+  </data>
+  <data name="CommonInstance" xml:space="preserve">
+    <value>인스턴스</value>
+  </data>
+  <data name="CommonLimit" xml:space="preserve">
+    <value>임계값</value>
+  </data>
+  <data name="CommonMemName" xml:space="preserve">
+    <value>멤버 이름</value>
+  </data>
+  <data name="CommonNoBarChartData" xml:space="preserve">
+    <value>바차트 데이터가 없습니다.</value>
+  </data>
+  <data name="CommonNoChartData" xml:space="preserve">
+    <value>차트 데이터가 조회되지 않았습니다.</value>
+  </data>
+  <data name="CommonNoChartDataUncorrectData" xml:space="preserve">
+    <value>차트를 생성할 데이터가 없거나, 입력 조건이 유효하지 않습니다 .</value>
+  </data>
+  <data name="CommonNoData" xml:space="preserve">
+    <value>데이터가 없습니다.</value>
+  </data>
+  <data name="CommonPerfCounter" xml:space="preserve">
+    <value>성능카운터</value>
+  </data>
+  <data name="CommonPerfInstance" xml:space="preserve">
+    <value>성능 인스턴스</value>
+  </data>
+  <data name="CommonPerfObject" xml:space="preserve">
+    <value>성능객체</value>
+  </data>
+  <data name="CommonProcTimeAlert" xml:space="preserve">
+    <value>%Processor Time - 전체 사용율과 Priviledged(시스템) 사용율을 표시합니다.</value>
+  </data>
+  <data name="CommonRecordDetailRun" xml:space="preserve">
+    <value>세부 실행 기록</value>
+  </data>
+  <data name="CommonRetrieve" xml:space="preserve">
+    <value>조회</value>
+  </data>
+  <data name="CommonSecond" xml:space="preserve">
+    <value>초</value>
+  </data>
+  <data name="CommonSelectServer" xml:space="preserve">
+    <value>서버 선택</value>
+  </data>
+  <data name="CommonSendMail" xml:space="preserve">
+    <value>메일 발송</value>
+  </data>
+  <data name="CommonServerType" xml:space="preserve">
+    <value>서버유형</value>
+  </data>
+  <data name="CommonTime" xml:space="preserve">
+    <value>시간</value>
+  </data>
+  <data name="CommonUseMobileAlert" xml:space="preserve">
+    <value>모바일알림사용</value>
+  </data>
+  <data name="CommonUseRuls" xml:space="preserve">
+    <value>규칙활성화</value>
+  </data>
+  <data name="LblMailAddFile" xml:space="preserve">
+    <value>File</value>
+  </data>
+  <data name="LblMailHeader" xml:space="preserve">
+    <value>Title</value>
+  </data>
+  <data name="LblMailMessage" xml:space="preserve">
+    <value>Inquiry details</value>
+  </data>
+  <data name="LblMailSender" xml:space="preserve">
+    <value>EMail</value>
+  </data>
+  <data name="LoginFail" xml:space="preserve">
+    <value>로그인에 실패하였습니다</value>
+  </data>
+  <data name="LoginWrongIDPasswd" xml:space="preserve">
+    <value>아이디 또는 비밀번호를 잘못 입력하셨습니다.</value>
+  </data>
+  <data name="MemberRegistAlertAlreadyInGruopMember" xml:space="preserve">
+    <value>The user account is already involved in other group</value>
+  </data>
+  <data name="MemberRegistAlertFailMemberRegist" xml:space="preserve">
+    <value>Registration of the user has been failed.</value>
+  </data>
+  <data name="MemberRegistAlertFailWorkDB" xml:space="preserve">
+    <value>Creating a user, or user group has been failed.</value>
+  </data>
+  <data name="MemberRegistAlertInpuName" xml:space="preserve">
+    <value>Enter a user name</value>
+  </data>
+  <data name="MemberRegistAlertInputMail" xml:space="preserve">
+    <value>Enter an email address</value>
+  </data>
+  <data name="MemberRegistAlertInputMemberInfo" xml:space="preserve">
+    <value>Enter the information of user to register</value>
+  </data>
+  <data name="MemberRegistAlertInputPasswd" xml:space="preserve">
+    <value>Enter a password</value>
+  </data>
+  <data name="MemberRegistAlertInputPhonNumber" xml:space="preserve">
+    <value>Enter your phone number</value>
+  </data>
+  <data name="MemberRegistAlertMemberDelete" xml:space="preserve">
+    <value>Are you sure to delete the selected user?</value>
+  </data>
+  <data name="MemberRegistAlertNoAgreementPasswd" xml:space="preserve">
+    <value>The both passwords that you entered, are not same.</value>
+  </data>
+  <data name="MemberRegistAlertNotAuthorized" xml:space="preserve">
+    <value>It's required to have a manager or owner's permission.</value>
+  </data>
+  <data name="MemberRegistAlertSelectMember" xml:space="preserve">
+    <value>It's required to select a user from the list.</value>
+  </data>
+  <data name="MemberRegistAlertSuccessMemberRegist" xml:space="preserve">
+    <value>Registration of the user has been completed.</value>
+  </data>
+  <data name="MemberRegistAlertUnUseMail" xml:space="preserve">
+    <value>The email address is valid</value>
+  </data>
+  <data name="MemberRegistAlertUseMail" xml:space="preserve">
+    <value>The email address is already being used.</value>
+  </data>
+  <data name="MemberRegistBtnMailCheck" xml:space="preserve">
+    <value>Check this email address</value>
+  </data>
+  <data name="MemberRegistBtnMemberDel" xml:space="preserve">
+    <value>Unregister</value>
+  </data>
+  <data name="MemberRegistLblCompanyName" xml:space="preserve">
+    <value>Company Name</value>
+  </data>
+  <data name="MemberRegistLblExplanationMember1" xml:space="preserve">
+    <value>Group owner, who created this group</value>
+  </data>
+  <data name="MemberRegistLblExplanationMember2" xml:space="preserve">
+    <value>Group manager, who can manage members, and settings</value>
+  </data>
+  <data name="MemberRegistLblExplanationMember3" xml:space="preserve">
+    <value>Permissions for monitoring dashboard, and reports</value>
+  </data>
+  <data name="MemberRegistLblExplanationUser1" xml:space="preserve">
+    <value>To add users in this monitoring group</value>
+  </data>
+  <data name="MemberRegistLblExplanationUser2" xml:space="preserve">
+    <value>Modifying user level requires permissions of Manager, or Owner.</value>
+  </data>
+  <data name="MemberRegistLblGrade" xml:space="preserve">
+    <value>User Level</value>
+  </data>
+  <data name="MemberRegistLblHeadMember" xml:space="preserve">
+    <value>User Level</value>
+  </data>
+  <data name="MemberRegistLblHeadUser" xml:space="preserve">
+    <value>Add members</value>
+  </data>
+  <data name="MemberRegistLblMail" xml:space="preserve">
+    <value>Email Address</value>
+  </data>
+  <data name="MemberRegistLblPassword" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="MemberRegistLblPasswordCheck" xml:space="preserve">
+    <value>Confirm the password</value>
+  </data>
+  <data name="MemberRegistLblPhoneNumber" xml:space="preserve">
+    <value>Phone number</value>
+  </data>
+  <data name="MemberRegistLblSubject" xml:space="preserve">
+    <value>Monitoring Users Management</value>
+  </data>
+  <data name="MobileAlertsAlertDuration" xml:space="preserve">
+    <value>알림 검색 주기(분) </value>
+  </data>
+  <data name="MobileAlertsAlertInfo" xml:space="preserve">
+    <value>이미 설정된 모바일 알림 규칙은 남아있지만,  모니터링 시스템 전체의 모바일 알림 설정을 비활성화 하게됩니다.</value>
+  </data>
+  <data name="MobileAlertsMobileSetting" xml:space="preserve">
+    <value>세부 설정 :   모바일 알림 사용함</value>
+  </data>
+  <data name="MobileAlertsRepeatCnt" xml:space="preserve">
+    <value>최대 반복 알림(개)</value>
+  </data>
+  <data name="MobileAlertsRepeatDuration" xml:space="preserve">
+    <value>반복 카운터 초기화 주기(시간)</value>
+  </data>
+  <data name="MobileAlertsSelectRul" xml:space="preserve">
+    <value>알림을 설정할 규칙을 먼저 선택하세요.</value>
+  </data>
+  <data name="PerformanceReportCommitedRam" xml:space="preserve">
+    <value>시스템 전체의 커밋된 메모리 크기와 가용 메모리(RAM)를 표시하며, 가용 메모리가 매우 작으면 시스템 전체 성능이 저하됩니다.</value>
+  </data>
+  <data name="PerformanceReportDiskIO" xml:space="preserve">
+    <value>논리디스크 평균 IO 처리 시간 백분율(%)과, 논리디스크 읽기당 소요 시간(밀리초)을 표시합니다.&lt;br/&gt;디스크 성능이 저하된 경우, 읽기당 소요 시간에 길어집니다.</value>
+  </data>
+  <data name="PerformanceReportDiskSpace" xml:space="preserve">
+    <value>논리디스크 별 여유 공간(MB)을 표시합니다. &lt;br/&gt; 디스크 여유 공간이 부족하면 성능은 물론, 서비스 안정성에 영향을 주게 됩니다.</value>
+  </data>
+  <data name="PerformanceReportNetwork" xml:space="preserve">
+    <value>네트워크 초당 수신, 송신, 전체 바이트수(모든 인터페이스 중 최대값)을 표시합니다.</value>
+  </data>
+  <data name="PerformanceReportThreadLength" xml:space="preserve">
+    <value>CPU 처리 대기열의 길이(프로세서당 작업 대기 쓰레드 수), 값이 1 이상이면 CPU 부하에 의해 대기 중인 쓰레드가 존재함을 의미합니다.</value>
+  </data>
+  <data name="PerformanceReportUsingProcTime" xml:space="preserve">
+    <value>%Processor Time - 전체 사용율과 Priviledged(시스템) 사용율을 표시합니다.</value>
+  </data>
+  <data name="ProcessInstanceAddInsName" xml:space="preserve">
+    <value>모니터할 프로세스명</value>
+  </data>
+  <data name="ProcessInstanceChoisFirst" xml:space="preserve">
+    <value>인스턴스를 선택 후 삭제하여 주시기 바랍니다.</value>
+  </data>
+  <data name="ProcessInstanceCounterName" xml:space="preserve">
+    <value>카운터명</value>
+  </data>
+  <data name="ProcessInstanceFailDelete" xml:space="preserve">
+    <value>인스턴스 삭제에 실패하였습니다.</value>
+  </data>
+  <data name="ProcessInstanceFailRegist" xml:space="preserve">
+    <value>인스턴스 등록에 실패하였습니다.</value>
+  </data>
+  <data name="ProcessInstanceInsName" xml:space="preserve">
+    <value>인스턴스명</value>
+  </data>
+  <data name="ProcessInstanceItem" xml:space="preserve">
+    <value>모니터링 항목</value>
+  </data>
+  <data name="ProcessInstanceList" xml:space="preserve">
+    <value>모니터링 대상 프로세스 목록</value>
+  </data>
+  <data name="ProcessInstancePresenceInstance" xml:space="preserve">
+    <value>해당 인스턴스가 이미 존재합니다.</value>
+  </data>
+  <data name="ProcessInstanceSelectedServer" xml:space="preserve">
+    <value>선택한 서버</value>
+  </data>
+  <data name="ProcessInstanceSucceceDelete" xml:space="preserve">
+    <value> 인스턴스 삭제를 완료 하였습니다.</value>
+  </data>
+  <data name="ProcessInstanceSucceceRegist" xml:space="preserve">
+    <value> 인스턴스를 등록 하였습니다.</value>
+  </data>
+  <data name="ReportsCPU" xml:space="preserve">
+    <value>SQL CPU</value>
+  </data>
+  <data name="ReportsCPUDiscription" xml:space="preserve">
+    <value>SQL 서버의 CPU 성능 지표와 사용량을 분석합니다.</value>
+  </data>
+  <data name="ReportsDisk" xml:space="preserve">
+    <value>SQL Disk</value>
+  </data>
+  <data name="ReportsDiskDiscription" xml:space="preserve">
+    <value>SQL 서버의 Disk 성능 지표와 사용량을 분석합니다.</value>
+  </data>
+  <data name="ReportsItemDefinition" xml:space="preserve">
+    <value>사용자 정의 보고서</value>
+  </data>
+  <data name="ReportsItemSQL" xml:space="preserve">
+    <value>SQL 서버</value>
+  </data>
+  <data name="ReportsItemWeb" xml:space="preserve">
+    <value>웹서버</value>
+  </data>
+  <data name="ReportsItemWin" xml:space="preserve">
+    <value>Windows 공통</value>
+  </data>
+  <data name="ReportsMemory" xml:space="preserve">
+    <value>SQL Memory</value>
+  </data>
+  <data name="ReportsMemoryDiscription" xml:space="preserve">
+    <value>SQL 서버의 Memory 성능 지표와 사용량을 분석합니다.</value>
+  </data>
+  <data name="ReportsPerfCounter" xml:space="preserve">
+    <value>서버 성능 카운터 조회</value>
+  </data>
+  <data name="ReportsPerfCounterDiscription" xml:space="preserve">
+    <value>성능카운터를 선택하여 시간대별 값을 조회합니다.</value>
+  </data>
+  <data name="ReportsPerfReportSql" xml:space="preserve">
+    <value>성능 분석 보고서</value>
+  </data>
+  <data name="ReportsPerfReportSqlDiscription" xml:space="preserve">
+    <value>SQL 서버의 주요 성능 지표와 사용량을 분석합니다.</value>
+  </data>
+  <data name="ReportsPerfReportWeb" xml:space="preserve">
+    <value>성능 분석 보고서</value>
+  </data>
+  <data name="ReportsPerfReportWebDiscription" xml:space="preserve">
+    <value>웹서버의 주요 성능 지표와 사용량을 분석합니다.</value>
+  </data>
+  <data name="ReportsPerfReportWin" xml:space="preserve">
+    <value>성능 분석 보고서</value>
+  </data>
+  <data name="ReportsPerfReportWinDiscription" xml:space="preserve">
+    <value>시스템 주요 자원의 성능 지표를 분석합니다.</value>
+  </data>
+  <data name="ReportsService" xml:space="preserve">
+    <value>서비스 분석 보고서</value>
+  </data>
+  <data name="ReportsServiceDiscription" xml:space="preserve">
+    <value>웹서비스 로그 분석을 기반으로 사용자 요청을 분석합니다.</value>
+  </data>
+  <data name="ReportsSubject" xml:space="preserve">
+    <value>Service Point 2.0 보고서</value>
+  </data>
+  <data name="ReportsUserService" xml:space="preserve">
+    <value>사용자 서비스 모니터링</value>
+  </data>
+  <data name="ReportsUserServiceDiscription" xml:space="preserve">
+    <value>준비중입니다.</value>
+  </data>
+  <data name="RuleEditorByPCIDLimitType" xml:space="preserve">
+    <value>임계값은 숫자만 입력 가능합니다.</value>
+  </data>
+  <data name="RuleEditorByPCIDRegisteredInstanceList" xml:space="preserve">
+    <value>등록된 인스턴스 목록</value>
+  </data>
+  <data name="RuleEditorByPCIDSelectPerfCnt" xml:space="preserve">
+    <value>성능 카운터 선택 </value>
+  </data>
+  <data name="RuleEditorByPCIDSelectPerfObj" xml:space="preserve">
+    <value>성능 오브젝트 선택</value>
+  </data>
+  <data name="RuleEditorByPCIDSelectRuls" xml:space="preserve">
+    <value>편집할 규칙을 먼저 선택하세요.</value>
+  </data>
+  <data name="RulesEditorAlertSelectItem" xml:space="preserve">
+    <value>항목을 선택해 주세요.</value>
+  </data>
+  <data name="ServerMemberNoUserList" xml:space="preserve">
+    <value>사용자 목록이 없습니다.</value>
+  </data>
+  <data name="ServerMemberSelectUserAlert" xml:space="preserve">
+    <value>전체 사용자 목록에서, 추가할 사용자를 선택하세요.</value>
+  </data>
+  <data name="ServerMemberTotalMember" xml:space="preserve">
+    <value>전체 사용자 목록</value>
+  </data>
+  <data name="ServerMemberUserList" xml:space="preserve">
+    <value>할당된 사용자 목록</value>
+  </data>
+  <data name="ServerRegistAgentVer" xml:space="preserve">
+    <value>에이전트 버전</value>
+  </data>
+  <data name="ServerRegistAlertDelete" xml:space="preserve">
+    <value>선택한 서버를 삭제 하시겠습니까?</value>
+  </data>
+  <data name="ServerRegistAlertDeleteServerSuccess" xml:space="preserve">
+    <value>선택한 서버를 삭제 하였습니다.</value>
+  </data>
+  <data name="ServerRegistAlertExistServerName" xml:space="preserve">
+    <value>동일한 서버명이 이미 존재합니다.</value>
+  </data>
+  <data name="ServerRegistAlertInputName" xml:space="preserve">
+    <value>서버의 이름 및 그룹명을 입력해 주세요.</value>
+  </data>
+  <data name="ServerRegistAlertNoExist" xml:space="preserve">
+    <value>등록된 서버가 없습니다.</value>
+  </data>
+  <data name="ServerRegistAlertRemainsPeriod" xml:space="preserve">
+    <value>사용 기간이 남아 있는 서버입니다.</value>
+  </data>
+  <data name="ServerRegistAlertSelectDeleteServer" xml:space="preserve">
+    <value>삭제할 서버를 선택하세요.</value>
+  </data>
+  <data name="ServerRegistAlertselectUpdateServer" xml:space="preserve">
+    <value>편집할 서버를 선택하세요.</value>
+  </data>
+  <data name="ServerRegistAlertServerInfoUpdateSuccess" xml:space="preserve">
+    <value>서버 정보를 수정하였습니다.</value>
+  </data>
+  <data name="ServerRegistAlertUpdate" xml:space="preserve">
+    <value>선택한 서버의 정보를 수정 하시겠습니까?</value>
+  </data>
+  <data name="ServerRegistBtnAgentDown" xml:space="preserve">
+    <value>에이전트 다운로드</value>
+  </data>
+  <data name="ServerRegistBtnCoupon" xml:space="preserve">
+    <value>쿠폰함</value>
+  </data>
+  <data name="ServerRegistBtnServerDelete" xml:space="preserve">
+    <value>서버삭제</value>
+  </data>
+  <data name="ServerRegistBtnServerInfoRegist" xml:space="preserve">
+    <value>서버정보수정</value>
+  </data>
+  <data name="ServerRegistBtnServerReg" xml:space="preserve">
+    <value>서버등록</value>
+  </data>
+  <data name="ServerRegistBtnUpdate" xml:space="preserve">
+    <value>현재정보 업데이트</value>
+  </data>
+  <data name="ServerRegistDate" xml:space="preserve">
+    <value>일</value>
+  </data>
+  <data name="ServerRegistDPGroup" xml:space="preserve">
+    <value>서버 표시 그룹명</value>
+  </data>
+  <data name="ServerRegistDPName" xml:space="preserve">
+    <value>서버 표시 이름</value>
+  </data>
+  <data name="ServerRegisterAddAlert" xml:space="preserve">
+    <value>서버를 등록하였습니다.</value>
+  </data>
+  <data name="ServerRegisterAddLblDPGroupName" xml:space="preserve">
+    <value>대시보드 화면에 표시될 서버의 그룹명을 기재합니다.</value>
+  </data>
+  <data name="ServerRegisterAddLblDPName" xml:space="preserve">
+    <value>대시보드 화면에 표시될 서버명을 고유값으로 지정합니다.</value>
+  </data>
+  <data name="ServerRegisterAddLblServerType" xml:space="preserve">
+    <value>모니터링할 서비스 유형을 지정합니다. (등록 이후 수정 불가)</value>
+  </data>
+  <data name="ServerRegisterAddLblUsingLang" xml:space="preserve">
+    <value>알림에 사용할 언어를 선택합니다.</value>
+  </data>
+  <data name="ServerRegisterAddServerInfo" xml:space="preserve">
+    <value>등록 할 서버의 정보를 입력하세요.</value>
+  </data>
+  <data name="ServerRegistExpirationDate" xml:space="preserve">
+    <value>만료일</value>
+  </data>
+  <data name="ServerRegistGroupName" xml:space="preserve">
+    <value>그룹명</value>
+  </data>
+  <data name="ServerRegistLang" xml:space="preserve">
+    <value>언어</value>
+  </data>
+  <data name="ServerRegistMinute" xml:space="preserve">
+    <value>분</value>
+  </data>
+  <data name="ServerRegistRegDate" xml:space="preserve">
+    <value>등록일</value>
+  </data>
+  <data name="ServerRegistRemainingPoint" xml:space="preserve">
+    <value>잔여포인트</value>
+  </data>
+  <data name="ServerRegistRemainingTime" xml:space="preserve">
+    <value>남은시간</value>
+  </data>
+  <data name="ServerRegistServerKey" xml:space="preserve">
+    <value>서버키</value>
+  </data>
+  <data name="ServerRegistServerName" xml:space="preserve">
+    <value>서버명</value>
+  </data>
+  <data name="ServerRegistSubject" xml:space="preserve">
+    <value>서버 등록/수정/삭제</value>
+  </data>
+  <data name="ServerRegistTime" xml:space="preserve">
+    <value>시간</value>
+  </data>
+  <data name="ServerRegistUseLang" xml:space="preserve">
+    <value>사용언어</value>
+  </data>
+  <data name="ServerRegistUseMinPoint" xml:space="preserve">
+    <value>분당 사용 포인트</value>
+  </data>
+  <data name="SettingsAuthorityAlert" xml:space="preserve">
+    <value>Manager, or Owner privilege is required to manage Service Point 2.0 settings.</value>
+  </data>
+  <data name="SettingsItemHeadAvailableTime" xml:space="preserve">
+    <value>Managing Monitoring Service Time Remaining</value>
+  </data>
+  <data name="SettingsItemHeadAvailableTimeExplanation" xml:space="preserve">
+    <value>To check remaining time of Service Point 2.0 monitoring agents</value>
+  </data>
+  <data name="SettingsItemHeadDownload" xml:space="preserve">
+    <value>Download &amp; Update</value>
+  </data>
+  <data name="SettingsItemHeadDownloadExplanation" xml:space="preserve">
+    <value>To download Service Point 2.0 related updates</value>
+  </data>
+  <data name="SettingsItemHeadMobileAlerts" xml:space="preserve">
+    <value>Mobile Alert Settings</value>
+  </data>
+  <data name="SettingsItemHeadMobileAlertsExplanation" xml:space="preserve">
+    <value>To configure alerts of mobile push service for the alerts from Service Point Dashboard</value>
+  </data>
+  <data name="SettingsItemHeadProcessInstance" xml:space="preserve">
+    <value>User Process Monitoring Management</value>
+  </data>
+  <data name="SettingsItemHeadProcessInstanceExplanation" xml:space="preserve">
+    <value>To register, or delete a user-defined process from any target server</value>
+  </data>
+  <data name="SettingsItemHeadRuleEditorByPCID" xml:space="preserve">
+    <value>Alert Management, based on Performance Counters</value>
+  </data>
+  <data name="SettingsItemHeadRuleEditorByPCIDExplanation" xml:space="preserve">
+    <value>To configure alerts, and their conditions, based on performance counters</value>
+  </data>
+  <data name="SettingsItemHeadRulesEditor" xml:space="preserve">
+    <value>Alert Management</value>
+  </data>
+  <data name="SettingsItemHeadRulesEditorExplanation" xml:space="preserve">
+    <value>To configure alerts, and their conditions, such as threshold, based on servers, and severity</value>
+  </data>
+  <data name="SettingsItemHeadServerMember" xml:space="preserve">
+    <value>Assigning users to monitoring servers</value>
+  </data>
+  <data name="SettingsItemHeadServerMemberExplanation" xml:space="preserve">
+    <value>To manage users, and servers to monitor. Service Point Dashboard will display information of servers only for assinged users.</value>
+  </data>
+  <data name="SettingsItemHeadServerRegister" xml:space="preserve">
+    <value>Monitoring Servers Management</value>
+  </data>
+  <data name="SettingsItemHeadServerRegisterExplanation" xml:space="preserve">
+    <value>To register, or edit server information to monitor</value>
+  </data>
+  <data name="SettingsItemHeadUserManagement" xml:space="preserve">
+    <value>Monitoring Users Management</value>
+  </data>
+  <data name="SettingsItemHeadUserManagementExplanation" xml:space="preserve">
+    <value>To register, or delete users of this monitoring group</value>
+  </data>
+  <data name="SettingsItemMonitoringManagement" xml:space="preserve">
+    <value>Monitoring Management</value>
+  </data>
+  <data name="SettingsItemServerManagement" xml:space="preserve">
+    <value>Servers Management</value>
+  </data>
+  <data name="SettingsItemUserManagement" xml:space="preserve">
+    <value>Users Management</value>
+  </data>
+  <data name="SettingsLinkHome" xml:space="preserve">
+    <value>To Settings Main Page</value>
+  </data>
+  <data name="SettingsSubject" xml:space="preserve">
+    <value>Service Point 2.0 Administrations</value>
+  </data>
+  <data name="StrMailHeaderEmtyAlert" xml:space="preserve">
+    <value>Missing required fields - Title</value>
+  </data>
+  <data name="StrMailMessageEmtyAlert" xml:space="preserve">
+    <value>Missing required fields - Inquiry details</value>
+  </data>
+  <data name="StrMailSenderEmtyAlert" xml:space="preserve">
+    <value>Missing required fields - Email Address</value>
+  </data>
+  <data name="StrMailSuccessSendAlert" xml:space="preserve">
+    <value>Your inquiry has been submitted successfully.</value>
+  </data>
+  <data name="CommonUnuse" xml:space="preserve">
+    <value>미사용</value>
+  </data>
+  <data name="CommonUse" xml:space="preserve">
+    <value>사용</value>
+  </data>
+  <data name="CommonUseOrUnuse" xml:space="preserve">
+    <value>사용여부</value>
+  </data>
+  <data name="CouponAreadyUse" xml:space="preserve">
+    <value>이미 사용된 쿠폰입니다.</value>
+  </data>
+  <data name="CouponInputNumber" xml:space="preserve">
+    <value>등록 할 쿠폰번호를 입력하세요.</value>
+  </data>
+  <data name="CouponLimitDate" xml:space="preserve">
+    <value>쿠폰 만기 날짜</value>
+  </data>
+  <data name="CouponNotHaven" xml:space="preserve">
+    <value>사용가능한 쿠폰이 없습니다.</value>
+  </data>
+  <data name="CouponNumber" xml:space="preserve">
+    <value>쿠폰 번호</value>
+  </data>
+  <data name="CouponPoint" xml:space="preserve">
+    <value>쿠폰 포인트</value>
+  </data>
+  <data name="CouponRegDate" xml:space="preserve">
+    <value>쿠폰 등록 날짜</value>
+  </data>
+  <data name="CouponSucceceRegist" xml:space="preserve">
+    <value>쿠폰이 정상적으로 등록 되었습니다.</value>
+  </data>
+  <data name="CouponUseAnother" xml:space="preserve">
+    <value>이미 다른 쿠폰을 사용하셨습니다.</value>
+  </data>
+  <data name="CouponUseDate" xml:space="preserve">
+    <value>쿠폰 사용 날짜</value>
+  </data>
+  <data name="CouponWrong" xml:space="preserve">
+    <value>잘못된 쿠폰 입니다.</value>
+  </data>
+  <data name="CommonSave" xml:space="preserve">
+    <value>저장</value>
+  </data>
+  <data name="RulesEditorAlertInputLimit" xml:space="preserve">
+    <value>임계값을 입력해 주세요.</value>
+  </data>
+</root>

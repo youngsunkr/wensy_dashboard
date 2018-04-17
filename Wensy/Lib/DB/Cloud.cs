@@ -47,7 +47,7 @@ namespace DB
             string QueryString = "";
             SetCmd("Cloud");
 
-            QueryString = @"select ServerNum,HostName,DisplayName,DisplayGroup,RAMSIZE,IPAddress,ServerType,CurrentStatus,WinVer,Processors,TimeIn,TimeIn_UTC,GETUTCDATE() as DB_UTC from tbHostStatus where ServerNum in (select ServerNum from tbservers_member where MemberNum="+MemberNum+")";
+            QueryString = @"select ServerNum,HostName,DisplayName,DisplayGroup,RAMSIZE,IPAddress,ServerType,CurrentStatus,WinVer,Processors,TimeIn,TimeIn_UTC,GETUTCDATE() as DB_UTC from tbHostStatus where ServerNum in (select ServerNum from tbservers_member where MemberNum=" + MemberNum + ")";
 
             SetQuery(QueryString);
             dsReturn = ExecuteDataSet();
@@ -115,13 +115,13 @@ where ServerNum in (" + ServerNum + ") and TimeIn_UTC >= DATEADD(MINUTE, -15, GE
             return nReturn;
 
         }
-        
+
 
         //SQL Procedure Call
         public int W_dashboard(int MemberNum, int CompanyNum, string ServerType)
         {
-          
-            string QueryString="";
+
+            string QueryString = "";
             SetCmd("Cloud");
 
             if (ServerType == "ALL")
@@ -137,8 +137,8 @@ where c.MemberNum = " + MemberNum + " and c.CompanyNum = " + CompanyNum + " Orde
             {
                 QueryString = @"select a.ServerNum, a.DisplayName,a.DisplayGroup,a.RAMSIZE,a.IPAddress,a.ServerType,a.CurrentStatus,b.P0,b.P1,b.P2,b.P3,b.P4,b.P7,b.P6,b.P9,b.P10,b.P5,b.P8,b.P11,b.P12,b.P13,b.P14,b.P15,b.P16,b.P17,b.P18,b.P19,a.TimeIn,a.TimeIn_UTC, GETUTCDATE() as DB_UTC
 from tbHostStatus as a
-inner join tbServers_Member as c on a.ServerNum = c.ServerNum and a.ServerType = '" + ServerType + "'" + 
-@" left outer join tbDashboard as b on a.ServerNum = b.ServerNum and a.TimeIn_UTC = b.TimeIn_UTC where c.MemberNum = " + MemberNum  + " and c.CompanyNum = " + CompanyNum + " Order by a.DisplayGroup, a.DisplayName";
+inner join tbServers_Member as c on a.ServerNum = c.ServerNum and a.ServerType = '" + ServerType + "'" +
+@" left outer join tbDashboard as b on a.ServerNum = b.ServerNum and a.TimeIn_UTC = b.TimeIn_UTC where c.MemberNum = " + MemberNum + " and c.CompanyNum = " + CompanyNum + " Order by a.DisplayGroup, a.DisplayName";
             }
 
             if (ServerType == "SQL")
@@ -197,7 +197,7 @@ inner join tbServers_Member as c on a.ServerNum = c.ServerNum and a.ServerType =
             dsReturn = ExecuteDataSet();
             return nReturn;
         }
-        
+
         public int get_SQLDatabaseFileSize(int ServerNum)
         {
             SetCmd("Cloud");
@@ -238,7 +238,7 @@ inner join tbServers_Member as c on a.ServerNum = c.ServerNum and a.ServerType =
         {
             SetCmd("Cloud");
             SetQuery("select top 1 TimeIn_UTC, ServerNum, Data_JSON from tbSQLLinked_JSON where ServerNum = " + ServerNum + " order by TimeIn_UTC desc");
-            
+
             dsReturn = ExecuteDataSet();
             return nReturn;
         }
@@ -260,7 +260,7 @@ inner join tbServers_Member as c on a.ServerNum = c.ServerNum and a.ServerType =
             dsReturn = ExecuteDataSet();
             return nReturn;
         }
-        
+
         public int w_Dashboard_SQL_Databases(int MemberNum, int CompanyNum, int ServerNum, int numDuration)
         {
             string QueryString = "";
@@ -351,7 +351,7 @@ drop table #Databases";
 
         public int m_tbCompany_Member_Add(int CompanyNum, string strEmail, string strPass, string strMemberName, string strCompanyName, int numGrade)
         {
-           
+
             SetCmd("Cloud");
             SetQuery(@"declare @Result int
 declare @MemberNum int
@@ -389,7 +389,7 @@ insert into dbo.tbMember (MemberNum, Email, UserPWD, Name, RegDate, CompanyName,
         public int m_tbCompany_Member_Del(int MemberNum, int CompanyNum, int MemberNum_Target)
         {
             SetCmd("Cloud");
-            SetQuery(@"declare @MemberNum int = " + MemberNum + " declare @CompanyNum int = " + CompanyNum + " declare @MemberNum_Target int = " + MemberNum_Target + 
+            SetQuery(@"declare @MemberNum int = " + MemberNum + " declare @CompanyNum int = " + CompanyNum + " declare @MemberNum_Target int = " + MemberNum_Target +
 @" declare @Result int declare @Grade int declare @Grade_Target int 
  if @MemberNum = @MemberNum_Target begin select - 4 as result return end
  select @Grade = Grade from tbMember where MemberNum = @MemberNum
@@ -406,9 +406,9 @@ insert into dbo.tbMember (MemberNum, Email, UserPWD, Name, RegDate, CompanyName,
 
         public int m_tbServers_List(int CompanyNum)
         {
-          
+
             SetCmd("Cloud");
-            SetQuery("select ServerNum,DisplayName,DisplayGroup,ServerType,RegDate,ProductKey,RegionCode,AgentVer from tbHostStatus where CompanyNum = " + CompanyNum );
+            SetQuery("select ServerNum,DisplayName,DisplayGroup,ServerType,RegDate,ProductKey,RegionCode,AgentVer from tbHostStatus where CompanyNum = " + CompanyNum);
 
             dsReturn = ExecuteDataSet();
             return nReturn;
@@ -417,7 +417,7 @@ insert into dbo.tbMember (MemberNum, Email, UserPWD, Name, RegDate, CompanyName,
 
         public int m_tbServers_Update(int MemberNum, int CompanyNum, string strDisplayName, string strDisplayGroup, int numServer, string strlanguage)
         {
-           
+
             string QueryString = "";
             SetCmd("Cloud");
             QueryString = @"declare @MemberNum int = " + MemberNum + " declare @CompanyNum int = " + CompanyNum + " declare @DisplayName nvarchar(64) = '" + strDisplayName + "' declare @DisplayGroup nvarchar(64) = '" + strDisplayGroup + "' declare @ServerNum int = " + numServer + " declare @RegionCode nvarchar(10) = '" + strlanguage + "'" +
@@ -434,9 +434,9 @@ if @RegionCode_Old <> @RegionCode begin update tbAlertRules_Server set ReasonCod
 
         public int m_tbServers_Del(int MemberNum, int CompanyNum, int numServer)
         {
-          
+
             SetCmd("Cloud");
-            SetQuery("delete tbHostStatus where ServerNum = " + numServer + 
+            SetQuery("delete tbHostStatus where ServerNum = " + numServer +
 " delete tbAlertRules_Server where ServerNum = " + numServer +
 " delete tbPCID_Server where ServerNum = " + numServer +
 " delete tbSQLQueryDefinition_Server where ServerNum = " + numServer +
@@ -450,7 +450,7 @@ if @RegionCode_Old <> @RegionCode begin update tbAlertRules_Server set ReasonCod
 
         public int m_tbServers_Add(int MemberNum, int CompanyNum, string strDisplayName, string strDisplayGroup, string strServerType, string strlanguage)
         {
-           
+
             string @QueryString = "";
             string strProductKey = Util.EncryptText(Util.getDateTime(DateTime.Now).ToString() + "_#_" + MemberNum);
             SetCmd("Cloud");
@@ -483,7 +483,7 @@ select 1 as Result";
 
         public int m_tbServers_Member_List(int CompanyNum, int numServer)
         {
-          
+
 
             SetCmd("Cloud");
             SetQuery("select a.ServerNum,a.MemberNum,b.Name as MemberName,b.Email from tbServers_Member as a inner join tbMember as b on a.CompanyNum = b.CompanyNum and a.MemberNum = b.MemberNum where a.CompanyNum = " + CompanyNum + " and a.ServerNum = " + numServer);
@@ -494,7 +494,7 @@ select 1 as Result";
 
         public int m_tbServers_Member_List_NotExist(int CompanyNum, int numServer)
         {
-           
+
 
             SetCmd("Cloud");
             SetQuery(@"select
@@ -507,7 +507,7 @@ select
 	CompanyNum,
 	MemberNum
 from tbServers_Member
-where CompanyNum = " + CompanyNum + " and ServerNum = " + numServer + 
+where CompanyNum = " + CompanyNum + " and ServerNum = " + numServer +
 @")as x
 	right join 
 (
@@ -517,7 +517,7 @@ select
 	b.name as MemberName
 from tbHostStatus as a
 	inner join tbMember as b on a.CompanyNum = b.CompanyNum
-where a.CompanyNum = " + CompanyNum + " and a.ServerNum = " + numServer + 
+where a.CompanyNum = " + CompanyNum + " and a.ServerNum = " + numServer +
 @") as y on x.MemberNum = y.MemberNum
 where x.MemberNum is null");
 
@@ -529,7 +529,7 @@ where x.MemberNum is null");
 
         public int m_tbServers_Member_Add(int CompanyNum, int numServer, int MemberNum)
         {
-            
+
             SetCmd("Cloud");
             SetQuery("insert into tbServers_Member(CompanyNum, MemberNum, ServerNum) values (" + CompanyNum + ", " + MemberNum + ", " + numServer + ")");
 
@@ -540,7 +540,7 @@ where x.MemberNum is null");
 
         public int m_tbServers_Member_Del(int CompanyNum, int numServer, int MemberNum)
         {
-           
+
             SetCmd("Cloud");
             SetQuery("delete tbServers_Member where CompanyNum = " + CompanyNum + " and MemberNum = " + MemberNum + " and ServerNum = " + numServer);
 
@@ -550,7 +550,7 @@ where x.MemberNum is null");
 
         public int m_tbAlertRules_Server_List_AlertLevel(int numServer)
         {
-          
+
 
             SetCmd("Cloud");
             SetQuery(@"select a.ReasonCode,a.ReasonCodeDesc,a.Threshold,a.Duration,a.InstanceName,a.RecordApps,a.IsEnabled,a.AlertLevel,b.PObjectName,b.PCounterName,a.MobileAlert from tbAlertRules_Server as a left outer JOIN tbPCID_Server as b ON a.ServerNum = b.ServerNum and a.PCID = b.PCID where a.ServerNum = " + numServer);
@@ -570,7 +570,7 @@ where x.MemberNum is null");
 
         public int m_tbAlertRules_Server_Update(int numServer, string strReasonCoed, double dblThreshod, string strInstanceName, int numDuration, bool bolIsEnabled, string strAlertLevel, bool bolRecordApps, string strAlertDescription, string strMobileAlert)
         {
-           
+
 
             SetCmd("Cloud");
             SetQuery("UPDATE tbAlertRules_Server SET Threshold = " + dblThreshod + ", InstanceName = '" + strInstanceName + "', Duration = " + numDuration + ", IsEnabled = '" + bolIsEnabled + "', AlertLevel = '" + strAlertLevel + "', RecordApps = '" + bolRecordApps + "', ReasonCodeDesc = '" + strAlertDescription + "', MobileAlert = '" + strMobileAlert + "' WHERE ServerNum = " + numServer + " and ReasonCode = '" + strReasonCoed + "'");
@@ -581,7 +581,7 @@ where x.MemberNum is null");
 
         public int m_tbAlertOptions_Update(int CompanyNum, int numPushInterval, int numPushMaxOccurs, int numPushResetInterval, bool bolUsePushAlert)
         {
-          
+
 
             SetCmd("Cloud");
             SetQuery("update tbAlertOptions  set PushInterval = " + numPushInterval + ", PushMaxOccurs = " + numPushMaxOccurs + ", PushResetInterval = " + numPushResetInterval + ", UsePushAlert = " + bolUsePushAlert + " where CompanyNum = " + CompanyNum);
@@ -592,7 +592,7 @@ where x.MemberNum is null");
 
         public int m_tbAlertOptions_List(int CompanyNum)
         {
-            
+
 
             SetCmd("Cloud");
             //SetQuery("select CompanyNum, PushInterval, PushMaxOccurs, PushResetInterval, UsePushAlert from tbAlertOptions where CompanyNum = " + CompanyNum);
@@ -604,7 +604,7 @@ where x.MemberNum is null");
 
         public int m_tbPCID_Server_PCounterName_List(int ServerNum, string strPObjectname)
         {
-          
+
             SetCmd("Cloud");
             SetQuery("select Servernum,PCID,PCounterName,HasInstance,ValueDescription,RValueDescription,used from tbPCID_Server where ServerNum = " + ServerNum + " and PObjectName = '" + strPObjectname + "' order by PCounterName");
 
@@ -614,7 +614,7 @@ where x.MemberNum is null");
 
         public int m_tbPInstance_Server_PInstance_List(int ServerNum, string strPCID)
         {
-           
+
 
             SetCmd("Cloud");
             SetQuery("select Servernum,PCID,InstanceName,IfContains from tbPInstance_Server where ServerNum = " + ServerNum + " and PCID = '" + strPCID + "' order by InstanceName");
@@ -625,7 +625,7 @@ where x.MemberNum is null");
 
         public int m_tbPInstance_Server_Add(int ServerNum, string strPCID, string strInstanceName, bool bolIfContains)
         {
-          
+
             string QueryString = "";
             SetCmd("Cloud");
             QueryString = @"update tbPInstance_Server set IfContains = '" + bolIfContains + "' where ServerNum = " + ServerNum + " and PCID = '" + strPCID + "' and InstanceName = '" + strInstanceName + "'" +
@@ -638,7 +638,7 @@ where x.MemberNum is null");
 
         public int m_tbPInstance_Server_Del(int ServerNum, string strPCID, string strInstanceName)
         {
-           
+
 
             SetCmd("Cloud");
             SetQuery("delete tbPInstance_Server where ServerNum = " + ServerNum + " and PCID = '" + strPCID + "' and InstanceName = '" + strInstanceName + "'");
@@ -649,7 +649,7 @@ where x.MemberNum is null");
 
         public int m_tbPCID_Server_PObject_List(int ServerNum)
         {
-           
+
 
             SetCmd("Cloud");
             SetQuery("select ServerNum,ServerType,PObjectName from tbPCID_Server where ServerNum = " + ServerNum + " group by ServerNum, ServerType, PObjectName order by PObjectName");
@@ -660,7 +660,7 @@ where x.MemberNum is null");
 
         public int m_tbPCID_Server_PObject_List(int ServerNum, string strPObjectName)
         {
-           
+
 
             SetCmd("Cloud");
             SetQuery("select Servernum,PCID,PCounterName,HasInstance,ValueDescription,RValueDescription,used from tbPCID_Server where ServerNum = " + ServerNum + " and PObjectName = '" + strPObjectName + "' order by PCounterName");
@@ -671,7 +671,7 @@ where x.MemberNum is null");
 
         public int m_tbAlertRules_Server_List(int numServer, string strPCID)
         {
-           
+
 
             SetCmd("Cloud");
             SetQuery("select ServerNum,ServerType,ReasonCode,PCID,Threshold,TOperator,ReasonCodeDesc,InstanceName,Duration,HasReference,RecordApps,IsEnabled,AlertLevel,RefDescription,ReqActionCode,MobileAlert from tbAlertRules_Server where ServerNum = " + numServer + " and PCID = '" + strPCID + "' order by PCID");
@@ -682,7 +682,7 @@ where x.MemberNum is null");
 
         public int m_tbMember_Add(string strEmail, string strPass, string strName, string strCompanyName, int numGrade)
         {
-           
+
 
             string QueryString = "";
 
@@ -692,7 +692,7 @@ where x.MemberNum is null");
 @" declare @MemberNum int declare @CompanyNum int set @MemberNum = (select isnull(max(membernum), 0) from tbMember) + 1
 if exists(select * from dbo.tbMember where Email = @Email) begin select - 2 as Result return end
 insert into dbo.tbMember(MemberNum, Email, UserPWD, Name, RegDate, CompanyName, CompanyNum, Grade) values(@MemberNum, @Email, @UserPWD, @Name, getdate(), @CompanyName, @MemberNum, @Grade)
-insert into tbAlertOptions(CompanyNum, PushInterval, PushMaxOccurs, PushResetInterval, UsePushAlert) values(@MemberNum, 2, 3, 60, 1) select 1 as Result";
+ select 1 as Result";
 
             SetQuery(QueryString);
             dsReturn = ExecuteDataSet();
@@ -701,7 +701,7 @@ insert into tbAlertOptions(CompanyNum, PushInterval, PushMaxOccurs, PushResetInt
 
         public int m_tbMember_Update(int MemberNum, string strName, string strPass, string strPass_New, string strHp, string strCompanyName)
         {
-           
+
 
             SetCmd("Cloud");
             SetQuery("update tbMember set  Name = '" + strName + "', UserPWD = '" + strPass_New + "', HP = '" + strHp + "', CompanyName = '" + strCompanyName + "' where MemberNum = " + MemberNum + " and UserPWD = '" + strPass + "'");
@@ -712,7 +712,7 @@ insert into tbAlertOptions(CompanyNum, PushInterval, PushMaxOccurs, PushResetInt
 
         public int m_Profile_Info(int MemberNum)
         {
-            
+
 
             SetCmd("Cloud");
             SetQuery("select Email, Name, RegDate, HP, CompanyName, CompanyNum from tbMember where MemberNum = " + MemberNum);
@@ -723,11 +723,11 @@ insert into tbAlertOptions(CompanyNum, PushInterval, PushMaxOccurs, PushResetInt
 
         public int R_ServerList(int MemberNum, string strServerType)
         {
-            
+
 
             SetCmd("Cloud");
 
-            if(strServerType != "ALL")
+            if (strServerType != "ALL")
             {
                 SetQuery("select b.DisplayName,b.ServerNum from tbServers_Member as a inner join tbHostStatus as b on a.ServerNum = b.ServerNum where a.MemberNum = " + MemberNum + " and b.ServerType = '" + strServerType + "'");
             }
@@ -737,7 +737,7 @@ insert into tbAlertOptions(CompanyNum, PushInterval, PushMaxOccurs, PushResetInt
                 SetQuery("select b.DisplayName,b.ServerNum from tbServers_Member as a inner join tbHostStatus as b on a.ServerNum = b.ServerNum where a.MemberNum = " + MemberNum + "");
             }
 
-            
+
 
             dsReturn = ExecuteDataSet();
             return nReturn;
@@ -746,7 +746,7 @@ insert into tbAlertOptions(CompanyNum, PushInterval, PushMaxOccurs, PushResetInt
 
         public int R_HostInfo(int ServerNum)
         {
-            
+
             SetCmd("Cloud");
             SetQuery("select DisplayName,Winver,IPAddress,RAMSize,HostName,ServerType from tbHostStatus where ServerNum = " + ServerNum + "");
 
@@ -756,7 +756,7 @@ insert into tbAlertOptions(CompanyNum, PushInterval, PushMaxOccurs, PushResetInt
 
         public int R_WEB_Report(int ServerNum, DateTime dtmStart, DateTime dtmEnd)
         {
-            
+
 
             SetCmd("Cloud");
             SetQuery("select TimeIn,P0,P1,P2,P3,P4,P5,P6,P7,P8,P9,P10,P11,P12,P13,P14,P15,P16,P17,P18,P19 from tbDashboard where Timein_UTC >= '" + dtmStart + "' and Timein_UTC < '" + dtmEnd + "' and ServerNum = " + ServerNum);
@@ -767,7 +767,7 @@ insert into tbAlertOptions(CompanyNum, PushInterval, PushMaxOccurs, PushResetInt
 
         public int R_PCID_Instance(int ServerNum, DateTime dtmStart, DateTime dtmEnd, string strPCID)
         {
-          
+
 
             SetCmd("Cloud");
             SetQuery("select TImeIn,PCID,PValue,InstanceName from tbPerfmonValues where TimeIn_UTC >= '" + dtmStart + "' and TimeIn_UTC < '" + dtmEnd + "' and ServerNum = " + ServerNum + " and PCID = '" + strPCID + "'");
@@ -778,7 +778,7 @@ insert into tbAlertOptions(CompanyNum, PushInterval, PushMaxOccurs, PushResetInt
 
         public int R_WEB_TimeTaken(int ServerNum, DateTime dtmStart, DateTime dtmEnd)
         {
-            
+
             SetCmd("Cloud");
             SetQuery("SELECT TOP(20) URI, AVG(AvgTimeTaken) AS [Average Time Taken], MAX(MaxTimeTaken) AS [Max Time Taken] FROM tbIISLog WHERE TimeIn >= '" + dtmStart + "' and TimeIn <= '" + dtmEnd + "' and ServerNum = " + ServerNum + " GROUP BY URI ORDER BY [Average Time Taken] DESC");
 
@@ -788,7 +788,7 @@ insert into tbAlertOptions(CompanyNum, PushInterval, PushMaxOccurs, PushResetInt
 
         public int R_WEB_Byte(int ServerNum, DateTime dtmStart, DateTime dtmEnd)
         {
-            
+
 
             SetCmd("Cloud");
             SetQuery("SELECT TOP(20) URI,SUM(CAST(SCBytes AS float)) AS [Total Bytes from Server],SUM(Hits) AS [Total Hits] FROM tbIISLog WHERE TimeIn >= '" + dtmStart + "' and TimeIn <= '" + dtmEnd + "' and ServerNum = " + ServerNum + " GROUP BY URI ORDER BY [Total Bytes from Server] DESC");
@@ -799,7 +799,7 @@ insert into tbAlertOptions(CompanyNum, PushInterval, PushMaxOccurs, PushResetInt
 
         public int R_WEB_RequestStatus(int ServerNum, DateTime dtmStart, DateTime dtmEnd)
         {
-          
+
 
             SetCmd("Cloud");
             SetQuery("SELECT ValueDescription, LogValue, SUM(TotalNumber) AS [Total] FROM tbIISRequestStatus WHERE TimeIn >= '" + dtmStart + "' AND TimeIn <= '" + dtmEnd + "' AND ServerNum = " + ServerNum + " GROUP BY ValueDescription, LogValue ORDER BY ValueDescription, Total DESC");
@@ -810,7 +810,7 @@ insert into tbAlertOptions(CompanyNum, PushInterval, PushMaxOccurs, PushResetInt
 
         public int R_WEB_Errors(int ServerNum, DateTime dtmStart, DateTime dtmEnd)
         {
-           
+
 
             SetCmd("Cloud");
             SetQuery("SELECT TOP(20) URI,SUM(Hits) AS [Total Hits],StatusCode as [Status Code],Win32StatusCode as [Win32 Status Code] FROM tbIISLog WHERE TimeIn >= '" + dtmStart + "' AND TimeIn <= '" + dtmEnd + "' AND ServerNum = " + ServerNum + " and StatusCode >= 400 GROUP BY URI, StatusCode, Win32StatusCode ORDER BY [Total Hits]DESC");
@@ -821,7 +821,7 @@ insert into tbAlertOptions(CompanyNum, PushInterval, PushMaxOccurs, PushResetInt
 
         public int R_WEB_ServiceStatus(int ServerNum, DateTime dtmStart, DateTime dtmEnd)
         {
-           
+
             SetCmd("Cloud");
             SetQuery("SELECT SUM(TotalHits) AS [Total Hits], SUM(TotalSCBytes) AS [Total Bytes from Server], SUM(TotalCSBytes) AS [Total Bytes from Clients],SUM(TotalCIP) AS [Total Client IP], SUM(TotalErrors) AS [Total Errors] FROM tbIISServiceStatus WHERE TimeIn >= '" + dtmStart + "' AND TimeIn <= '" + dtmEnd + "' AND ServerNum = " + ServerNum);
 
@@ -831,7 +831,7 @@ insert into tbAlertOptions(CompanyNum, PushInterval, PushMaxOccurs, PushResetInt
 
         public int R_SQL_Performance(int ServerNum, DateTime dtmStart, DateTime dtmEnd)
         {
-           
+
             string QueryString = "";
             SetCmd("Cloud");
             QueryString = @"select TimeIn,PCID,PValue from tbPerfmonValues where Timein_UTC >= '" + dtmStart.ToString("yyyy-MM-dd HH:mm:ss") + "' and Timein_UTC <= '" + dtmEnd.ToString("yyyy-MM-dd HH:mm:ss") + "' and ServerNum = " + ServerNum + " and PCID = 'P001' and InstanceName = '_Total' union all" +
@@ -853,11 +853,11 @@ insert into tbAlertOptions(CompanyNum, PushInterval, PushMaxOccurs, PushResetInt
 
         public int R_SQL_CPU(int ServerNum, DateTime dtmStart, DateTime dtmEnd)
         {
-           
+
 
             SetCmd("Cloud");
-            SetQuery(@"select TImeIn,PCID,Pvalue from tbPerfmonValues where Timein_UTC >= '" + dtmStart.ToString("yyyy-MM-dd HH:mm:ss") + "' and Timein_UTC < '" + dtmEnd.ToString("yyyy-MM-dd HH:mm:ss") + "' and ServerNum = " + ServerNum + " and PCID = 'P001' and InstanceName = '_Total' union all" + 
-@" select TImeIn,PCID,Pvalue from tbPerfmonValues where Timein_UTC >= '" + dtmStart.ToString("yyyy-MM-dd HH:mm:ss") + "' and Timein_UTC < '" + dtmEnd.ToString("yyyy-MM-dd HH:mm:ss") + "' and ServerNum = " + ServerNum + " and PCID = 'P139' union all" + 
+            SetQuery(@"select TImeIn,PCID,Pvalue from tbPerfmonValues where Timein_UTC >= '" + dtmStart.ToString("yyyy-MM-dd HH:mm:ss") + "' and Timein_UTC < '" + dtmEnd.ToString("yyyy-MM-dd HH:mm:ss") + "' and ServerNum = " + ServerNum + " and PCID = 'P001' and InstanceName = '_Total' union all" +
+@" select TImeIn,PCID,Pvalue from tbPerfmonValues where Timein_UTC >= '" + dtmStart.ToString("yyyy-MM-dd HH:mm:ss") + "' and Timein_UTC < '" + dtmEnd.ToString("yyyy-MM-dd HH:mm:ss") + "' and ServerNum = " + ServerNum + " and PCID = 'P139' union all" +
 @" select TImeIn,PCID,Pvalue from tbPerfmonValues where Timein_UTC >= '" + dtmStart.ToString("yyyy-MM-dd HH:mm:ss") + "' and Timein_UTC < '" + dtmEnd.ToString("yyyy-MM-dd HH:mm:ss") + "' and ServerNum = " + ServerNum + " and PCID in ('P004', 'P107', 'P108', 'P106', 'P184')");
 
             dsReturn = ExecuteDataSet();
@@ -866,7 +866,7 @@ insert into tbAlertOptions(CompanyNum, PushInterval, PushMaxOccurs, PushResetInt
 
         public int R_SQL_CPU_Query(int ServerNum, DateTime dtmStart, DateTime dtmEnd)
         {
-          
+
             SetCmd("Cloud");
             SetQuery("select a.login_name,a.db_name,b.cpu_time,a.full_query_text from tbSQLCurrentExecution as a with (nolock) inner join  (select top 20 TimeIn_UTC,servernum, cpu_time from tbSQLCurrentExecution where Timein_UTC >= '" + dtmStart.ToString("yyyy-MM-dd HH:mm:ss") + "' and Timein_UTC < '" + dtmEnd.ToString("yyyy-MM-dd HH:mm:ss") + "' and ServerNum = " + ServerNum + " order by cpu_time desc) as b on a.TimeIn_UTC = b.TimeIn_UTC and a.ServerNum = b.ServerNum order by b.cpu_time desc");
 
@@ -876,7 +876,7 @@ insert into tbAlertOptions(CompanyNum, PushInterval, PushMaxOccurs, PushResetInt
 
         public int R_PCID(int ServerNum, DateTime dtmStart, DateTime dtmEnd, string strPCID)
         {
-          
+
 
             SetCmd("Cloud");
             SetQuery(@"select a.TimeIn,a.PCID,a.PValue,b.PCounterName 
@@ -890,7 +890,7 @@ where a.TimeIn_UTC >= '" + dtmStart.ToString("yyyy-MM-dd HH:mm:ss") + "' and a.T
 
         public int W_SQLConfiguration(int ServerNum)
         {
-          
+
             SetCmd("Cloud");
             SetQuery(@"set nocount on
 set transaction isolation level read uncommitted  
@@ -915,7 +915,7 @@ where ServerNum = " + ServerNum + " order by Name");
 
         public int w_PCID_Instance(int ServerNum, int numDuration, string strPCID)
         {
-          
+
 
             SetCmd("Cloud");
             SetQuery("select TImeIn,PCID,PValue,InstanceName from tbPerfmonValues where TimeIn_UTC >= dateadd(MINUTE, -" + numDuration + ", GETUTCDATE()) and ServerNum = " + ServerNum + " and PCID = '" + strPCID + "' order by TimeIn_UTC, InstanceName");
@@ -926,7 +926,7 @@ where ServerNum = " + ServerNum + " order by Name");
 
         public int w_SQLDatabasesDetail(int ServerNum)
         {
-          
+
             SetCmd("Cloud");
             SetQuery(@"select top 1 TimeIn,database_name,create_date,compatibility_level,collation_name,user_access_desc,is_read_only,is_auto_shrink_on,state_desc,is_in_standby,snapshot_isolation_state_desc
 	,is_read_committed_snapshot_on,recovery_model_desc,page_verify_option_desc,is_auto_create_stats_on,is_auto_update_stats_on,is_auto_update_stats_async_on,is_fulltext_enabled,is_trustworthy_on,is_parameterization_forced
@@ -936,9 +936,9 @@ where ServerNum = " + ServerNum + " order by Name");
             return nReturn;
         }
 
-        public int R_Windows_Perfmon(int ServerNum, DateTime dtmStart,DateTime dtmEnd, string strPCID,string strInstanceName)
+        public int R_Windows_Perfmon(int ServerNum, DateTime dtmStart, DateTime dtmEnd, string strPCID, string strInstanceName)
         {
-          
+
 
             SetCmd("Cloud");
 
@@ -951,7 +951,7 @@ where ServerNum = " + ServerNum + " order by Name");
             {
                 SetQuery(@"select TImeIn,InstanceName,PValue from tbPerfmonValues where Timein_UTC >= '" + dtmStart + "' and Timein_UTC < '" + dtmEnd + "' and ServerNum = " + ServerNum + " and PCID  = '" + strPCID + "' and InstanceName = '" + strInstanceName + "'");
             }
-            
+
 
             dsReturn = ExecuteDataSet();
             return nReturn;
@@ -959,7 +959,7 @@ where ServerNum = " + ServerNum + " order by Name");
 
         public int m_tbPCID_Server_Counter_List(int ServerNum)
         {
-          
+
             SetCmd("Cloud");
             SetQuery("select a.ServerNum,a.PCID,a.PObjectName,a.PCounterName,b.InstanceName,a.HasInstance from tbPCID_Server as a left outer join tbPInstance_Server as b on a.ServerNum = b.ServerNum and a.PCID = b.PCID where a.ServerNum = " + ServerNum + " order by a.PObjectName, a.PCounterName, b.InstanceName");
 
@@ -968,7 +968,7 @@ where ServerNum = " + ServerNum + " order by Name");
         }
         public int w_CPUUsage_Detail(int ServerNum)
         {
-         
+
 
             SetCmd("Cloud");
             SetQuery("select top 10 InstanceName ,RValue as PValue from tbPerfmonValues as a inner join tbHoststatus as b on a.servernum = b.servernum and a.TimeIn_UTC = b.TimeIn_UTC where b.ServerNum = " + ServerNum + " and PCID = 'P006' order by PValue desc");
@@ -977,9 +977,9 @@ where ServerNum = " + ServerNum + " order by Name");
             return nReturn;
         }
 
-        public int w_CPUUsage(int ServerNum,int numDuration)
+        public int w_CPUUsage(int ServerNum, int numDuration)
         {
-          
+
             SetCmd("Cloud");
             SetQuery(@"select TimeIn,P0 as TotalCPU,P1 as KernelCPU,case when  P0 > P1 then P0-P1 else 0 end as UserCPU,P2 as PQL from tbDashboard where TimeIn_UTC >= dateadd(minute, " + -numDuration + ", GETUTCDATE()) and ServerNum = " + ServerNum + " order by TimeIn_UTC");
 
@@ -990,7 +990,7 @@ where ServerNum = " + ServerNum + " order by Name");
 
         public int w_SQLMemory(int ServerNum, int numDuration)
         {
-           
+
 
             SetCmd("Cloud");
             //SetQuery(@"select TimeIn, P100, P101, P081, P090, P182, P183, P180, P178, P168, P177 from tbSQLMemory with (nolock) where ServerNum = " + ServerNum + " and TimeIn_UTC >= DATEADD(Minute, "+ -numDuration + ", GETUTCDATE()) order by TimeIn_UTC");
@@ -1002,7 +1002,7 @@ where ServerNum = " + ServerNum + " order by Name");
 
         public int w_MemoryUsage_Detail(int ServerNum)
         {
-            
+
 
             SetCmd("Cloud");
             SetQuery(@"select top 10 InstanceName, PValue from tbPerfmonValues as a with (nolock) inner join tbHoststatus as b with (nolock) on a.TimeIn_UTC = b.TimeIn_UTC and a.ServerNum = b.ServerNum where a.ServerNum = " + ServerNum + " and PCID = 'P013' order by PValue desc");
@@ -1013,7 +1013,7 @@ where ServerNum = " + ServerNum + " order by Name");
 
         public int w_MemoryUsage(int ServerNum, int numDuration)
         {
-            
+
 
             SetCmd("Cloud");
             SetQuery("select TimeIn, P4, P3 from tbDashboard where TimeIn_UTC >= dateadd(minute, -" + numDuration + ", GETUTCDATE()) and ServerNum = " + ServerNum);
@@ -1024,7 +1024,7 @@ where ServerNum = " + ServerNum + " order by Name");
 
         public int w_SQLActiveSession(int ServerNum)
         {
-            
+
 
             SetCmd("Cloud");
             SetQuery(@"select TimeIn,Login_Name,Host_Name,Client_Net_Address,TotalSession,ActiveSession from tbSQLSession where ServerNum = " + ServerNum + "	and TimeIn_UTC = (select top 1 TimeIn_UTC from tbSQLSession where ServerNum = " + ServerNum + " order by TimeIn_UTC desc)");
@@ -1036,7 +1036,7 @@ where ServerNum = " + ServerNum + " order by Name");
 
         public int w_CurrentExecution_List(int ServerNum)
         {
-           
+
 
             SetCmd("Cloud");
             SetQuery(@"SELECT TimeIn,db_name,command,cpu_time,total_elapsed_time,logical_reads,reads,writes,blocking_session_id,wait_type,wait_time,wait_resource,full_query_text FROM tbSQLCurrentExecution
@@ -1049,7 +1049,7 @@ where ServerNum = " + ServerNum + " and TimeIn_UTC = (select top 1 TimeIn_UTC fr
 
         public int w_SQLDatabasesFileSize(int ServerNum, int numDuration)
         {
-           
+
 
             SetCmd("Cloud");
             SetQuery(@"set nocount on
@@ -1088,7 +1088,7 @@ where TimeIn_UTC >= dateadd(MINUTE, " + -numDuration + ", GETUTCDATE())	and Serv
         }
         public int w_SQLServiceStatus(int ServerNum)
         {
-          
+
 
             SetCmd("Cloud");
             SetQuery(@"select TimeIn,servicename,process_id,startup_type_desc,status_desc,last_startup_time,service_account,is_clustered,cluster_nodename,filename from tbSQLServiceStatus where ServerNum = " + ServerNum + "	and TimeIn_UTC = (select top 1 TimeIn_UTC from tbSQLServiceStatus where ServerNum = " + ServerNum + " order by TimeIn_UTC desc)");
@@ -1099,7 +1099,7 @@ where TimeIn_UTC >= dateadd(MINUTE, " + -numDuration + ", GETUTCDATE())	and Serv
 
         public int w_SQLIndexFlagment(int ServerNum)
         {
-            
+
             SetCmd("Cloud");
             SetQuery(@"
 select * 
@@ -1128,7 +1128,7 @@ where ServerNum = " + ServerNum + " and TimeIn_UTC = (select top 1 TimeIn_UTC fr
         }
         public int w_SQLLinkedCheck(int ServerNum)
         {
-           
+
             SetCmd("Cloud");
             SetQuery(@"select TimeIn, LinkedName from tbSQLLinkedCheck where ServerNum = " + ServerNum + " and TimeIn_UTC > DATEADD(minute, -1, GETUTCDATE())");
 
@@ -1137,7 +1137,7 @@ where ServerNum = " + ServerNum + " and TimeIn_UTC = (select top 1 TimeIn_UTC fr
         }
         public int w_SQLAgentFail(int ServerNum)
         {
-          
+
 
             SetCmd("Cloud");
             SetQuery(@"select TimeIn,JOB_NAME,RUN_REQUESTED_DATE,LAST_EXECUTED_STEP_ID,JOB_HISTORY_ID,MESSAGE,STEP_NAME,COMMAND from tbSQLAgentFail where ServerNum = " + ServerNum + " and TimeIn_UTC > DATEADD(minute, -1, GETUTCDATE())");
@@ -1147,7 +1147,7 @@ where ServerNum = " + ServerNum + " and TimeIn_UTC = (select top 1 TimeIn_UTC fr
         }
         public int w_SQLErrorlog(int ServerNum)
         {
-           
+
 
             SetCmd("Cloud");
             SetQuery(@"select LogDate, ProcessInfo, ErrorText from tbSQLErrorlog where ServerNum = " + ServerNum + " and TimeIn_UTC >= dateadd (MINUTE, -1, GETUTCDATE()) order by LogDate");
@@ -1157,36 +1157,36 @@ where ServerNum = " + ServerNum + " and TimeIn_UTC = (select top 1 TimeIn_UTC fr
         }
         public int w_tbAppTrace(int ServerNum, DateTime dtm_UTC)
         {
-            
+
             string QueryString;
 
             SetCmd("Cloud");
             string convertDt = dtm_UTC.ToString("yyyy-MM-dd HH:mm:ss");
             QueryString = "SELECT URI, ClientLocation, RunningTime, TimeIn, ReasonCode FROM tbIISAppTrace WHERE TimeIn_UTC = '" + convertDt + "' and ServerNum = " + ServerNum;
-                
+
             SetQuery(QueryString);
             dsReturn = ExecuteDataSet();
             return nReturn;
         }
         public int w_ChartSubject(int CompanyNum, int MemberNum, string strReasonCode)
         {
-           
+
 
             SetCmd("Cloud");
             SetQuery(@"SELECT b.ValueDescription
 FROM tbAlertRules_Server as a
 	INNER JOIN tbPCID_Server as b on a.ServerNum = b.ServerNum and a.PCID = b.PCID
 	inner join tbServers_Member as c on b.ServerNum = c.ServerNum
-WHERE c.CompanyNum = " + CompanyNum + 
-	" and c.MemberNum = " + MemberNum + 
-	" and a.ReasonCode = '" + strReasonCode + "'");
+WHERE c.CompanyNum = " + CompanyNum +
+    " and c.MemberNum = " + MemberNum +
+    " and a.ReasonCode = '" + strReasonCode + "'");
 
             dsReturn = ExecuteDataSet();
             return nReturn;
         }
-        public int w_AlertDetail_Table(int CompanyNum, int MemberNum, int ServerNum,string strInstanceName, string strReasonCode)
+        public int w_AlertDetail_Table(int CompanyNum, int MemberNum, int ServerNum, string strInstanceName, string strReasonCode)
         {
-            
+
 
             SetCmd("Cloud");
             SetQuery(@"SELECT TOP (30) a.TimeIn,a.ReasonCode,b.DisplayName,a.InstanceName,a.PValue,a.AlertDescription FROM tbAlerts as a inner join tbHostStatus as b on a.ServerNum = b.ServerNum WHERE a.TimeIn_UTC >= DATEADD(MINUTE, -60, GETUTCDATE())  and b.ServerNum = " + ServerNum + " AND a.ReasonCode = '" + strReasonCode + "' AND a.InstanceName = '" + strInstanceName + "' ORDER BY a.TimeIn_UTC DESC");
@@ -1197,7 +1197,7 @@ WHERE c.CompanyNum = " + CompanyNum +
         }
         public int w_AlertDetail_Chart(int CompanyNum, int MemberNum, int ServerNum, string strInstanceName, string strReasonCode)
         {
-            
+
 
             SetCmd("Cloud");
             SetQuery(@"SELECT a.TimeIn,a.PValue,b.ReasonCode FROM tbPerfmonValues as a INNER JOIN tbAlertRules_Server as b on a.ServerNum = b.ServerNum and a.PCID = b.PCID
@@ -1209,17 +1209,17 @@ WHERE b.ReasonCode = '" + strReasonCode + "' AND a.InstanceName = '" + strInstan
 
         public int W_WEB_TimeTaken(int ServerNum, DateTime dtmStart, DateTime dtmEnd)
         {
-            
+
 
             SetCmd("Cloud");
-            SetQuery("SELECT TOP(5) URI, AVG(AvgTimeTaken) AS[Average Time Taken], MAX(MaxTimeTaken) AS[Max Time Taken] FROM tbIISLog WHERE TimeIn >= '" + dtmStart + "' and TimeIn <= '" + dtmEnd + "' and ServerNum = "  + ServerNum + " GROUP BY URI ORDER BY[Average Time Taken] DESC");
+            SetQuery("SELECT TOP(5) URI, AVG(AvgTimeTaken) AS[Average Time Taken], MAX(MaxTimeTaken) AS[Max Time Taken] FROM tbIISLog WHERE TimeIn >= '" + dtmStart + "' and TimeIn <= '" + dtmEnd + "' and ServerNum = " + ServerNum + " GROUP BY URI ORDER BY[Average Time Taken] DESC");
 
             dsReturn = ExecuteDataSet();
             return nReturn;
         }
         public int W_WEB_Byte(int ServerNum, DateTime dtmStart, DateTime dtmEnd)
         {
-          
+
 
             SetCmd("Cloud");
             SetQuery("SELECT TOP(5) URI, SUM(CAST(SCBytes AS float)) AS [Total Bytes from Server], SUM(Hits) AS [Total Hits] FROM tbIISLog WHERE TimeIn >= '" + dtmStart + "' and TimeIn <= '" + dtmEnd + "' and ServerNum = " + ServerNum + " GROUP BY URI ORDER BY [Total Bytes from Server] DESC");
@@ -1251,22 +1251,22 @@ WHERE b.ReasonCode = '" + strReasonCode + "' AND a.InstanceName = '" + strInstan
         public void R_Adhoc2(string QueryString)
         {
             SqlConnection con = new SqlConnection();
-            con.ConnectionString =  "Data Source=127.0.0.1;Initial Catalog=ServicePoint;Persist Security Info=True;User ID=sa;Password=kang0726!@#$";
+            con.ConnectionString = "Data Source=127.0.0.1;Initial Catalog=ServicePoint;Persist Security Info=True;User ID=sa;Password=kang0726!@#$";
             con.Open();
             cmd.Connection = con;
             SetQuery(QueryString);
             SqlDataReader sdr = ExecuteDataReader();
-          
+
             DataSet ds_temp = new DataSet();
             DataTable dt_temp = new DataTable();
-                        
+
             ds_temp.Tables.Add(dt_temp);
             //ds.tables[0].add(dt);
             ds_temp.Load(sdr, LoadOption.PreserveChanges, dt_temp);
             dsReturn = ds_temp;
             con.Close();
             //return nReturn;
-            
+
 
         }
 

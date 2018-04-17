@@ -31,9 +31,15 @@ namespace ServicePoint
         }
         private void Page_PreRender(object sender, EventArgs e)
         {
-            dt_ServerList.Clear();
-            dt_ServerList.Dispose();
-            dicAlert.Clear();
+            if (dt_ServerList != null)
+            {
+                dt_ServerList.Clear();
+
+                dt_ServerList.Dispose();
+            }
+
+            if (dicAlert != null)
+                dicAlert.Clear();
         }
         public void RequestQueryString()
         {
@@ -66,19 +72,24 @@ namespace ServicePoint
             DB.Cloud cloud = new DB.Cloud();
 
             //DataTable dt_ServerAlertList = new DataTable();
-            
+
             //서버리스트 읽어오기
             string MyServerList = "";
             cloud.SetCmd("Cloud");
             cloud.get_MyServerList(MemberNum);
+            if (cloud.dsReturn.Tables[0].Rows.Count == 0)
+            {
+                return;
+            }
 
             foreach (DataRow dr in cloud.dsReturn.Tables[0].Rows)
             {
                 MyServerList += dr["ServerNum"].ToString() + ",";
             }
-                                     
-            MyServerList = MyServerList.Substring(0, MyServerList.Length - 1);
-            
+            if (MyServerList.Length > 0)
+            {
+                MyServerList = MyServerList.Substring(0, MyServerList.Length - 1);
+            }
             cloud.SetCmd("Cloud");
             int nReturn = cloud.get_ServerStatus(MyServerList);
             DataSet ds = cloud.dsReturn;
@@ -132,7 +143,7 @@ namespace ServicePoint
             ////rpt_Alert.DataBind();
             dt_Group.Clear();
             cloud.CloseCon();
-          
+
         }
         #region Func
         public string GetUrlEncodingValue(string strGroupName)
@@ -361,7 +372,7 @@ namespace ServicePoint
             return returnString;
         }
 
-       
+
         //public static string RedirectToAlertDetailPage(object name, object hostName, object reasonCode, object instanceName, object ServerNum, object TimeIn, object TimeIn_UTC)
         //{
         //    // ALERT LINK URL
